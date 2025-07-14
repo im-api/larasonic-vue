@@ -24,7 +24,7 @@ use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Support\Facades\RateLimiter;
 use Knuckles\Camel\Extraction\ExtractedEndpointData;
 use Symfony\Component\HttpFoundation\Request as HttpFoundationRequest;
-
+use Illuminate\Support\Facades\Schema;
 final class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -59,6 +59,8 @@ final class AppServiceProvider extends ServiceProvider
         $this->configurePrisms();
         $this->configureScribeDocumentation();
         $this->configureRateLimiting();
+        Schema::defaultStringLength(191);
+
     }
 
     /**
