@@ -76,19 +76,6 @@ function submit() {
               <InputError :message="form.errors.password_confirmation" />
             </div>
 
-            <div v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature">
-              <div class="flex items-center space-x-2">
-                <Checkbox id="terms" v-model:checked="form.terms" name="terms" required />
-                <label for="terms" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                  I agree to the
-                  <a target="_blank" :href="route('terms.show')" class="rounded-md text-sm underline">Terms of Service</a>
-                  and
-                  <a target="_blank" :href="route('policy.show')" class="rounded-md text-sm underline">Privacy Policy</a>
-                </label>
-              </div>
-              <InputError :message="form.errors.terms" />
-            </div>
-
             <div class="flex items-center justify-end gap-4">
               <Link :href="route('login')" class="text-sm underline">
                 Already registered?
