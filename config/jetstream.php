@@ -61,7 +61,7 @@ return [
 
     'features' => [
         Features::termsAndPrivacyPolicy(),
-        Features::api(),
+//        Features::api(),
         Features::accountDeletion(),
     ],
 
