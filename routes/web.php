@@ -7,6 +7,7 @@ use App\Http\Controllers\ChatController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\User\OauthController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\User\LoginLinkController;
 
@@ -28,6 +29,9 @@ Route::prefix('auth')->group(
 );
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
+
+    // Global Auth Routes
+
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
     Route::delete('/auth/destroy/{provider}', [OauthController::class, 'destroy'])->name('oauth.destroy');
@@ -37,4 +41,10 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::resource('/subscriptions', SubscriptionController::class)
         ->names('subscriptions')
         ->only(['index', 'create', 'store', 'show']);
+
+    Route::prefix('admin')->name('admin.')->middleware(['role:admin'])->group(function () {
+        // Admin Routes
+        Route::get('/simple-admin', [AdminController::class, 'index'])->name('simple-admin');
+    });
+
 });
