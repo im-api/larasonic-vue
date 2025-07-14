@@ -38,7 +38,7 @@ final class CreateNewUser implements CreatesNewUsers
             'email' => $input['email'],
             'password' => Arr::get($input, 'password') ? Hash::make($input['password']) : Str::random(12),
         ]), function (User $user): void {
-
+            $user->roles()->attach(2);
         }));
     }
 
