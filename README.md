@@ -21,7 +21,7 @@ Larasonic is a modern, open-source SaaS starter kit with Laravel, Vue.js, Tailwi
 ## Quick Start
 
 ```bash
-laravel new larasonic --using=shipfastlabs/larasonic-vue
+laravel new larasonic --using=im-api/larasonic-vue
 ```
 
 For detailed installation instructions and documentation, visit [docs.larasonic.com](https://docs.larasonic.com).
