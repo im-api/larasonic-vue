@@ -17,10 +17,11 @@ final class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call(LaratrustSeeder::class);
-        User::factory()->withPersonalTeam()->create([
-            'name' => 'Test User',
+        $user = User::factory()->create([
+            'name' => 'Admin User',
             'email' => 'test@example.com',
             'password' => Hash::make('password'),
         ]);
+        $user->roles()->attach(1);
     }
 }
