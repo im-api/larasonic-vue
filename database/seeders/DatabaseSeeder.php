@@ -16,6 +16,7 @@ final class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->call(LaratrustSeeder::class);
         User::factory()->withPersonalTeam()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',

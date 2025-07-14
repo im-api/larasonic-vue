@@ -27,9 +27,7 @@ final class UserPolicy
         }
 
         // Allow if user has read permission and belongs to same team
-        return $user->belongsToTeam($model->currentTeam)
-            && $user->hasTeamPermission($model->currentTeam, 'read')
-            && $user->tokenCan('read');
+        return auth()->user()->hasRole('admin');
     }
 
     /**
@@ -37,9 +35,7 @@ final class UserPolicy
      */
     public function create(User $user): bool
     {
-        return ($user->hasTeamRole($user->currentTeam, 'admin')
-            || $user->hasTeamPermission($user->currentTeam, 'create'))
-            && $user->tokenCan('create');
+        return  auth()->user()->hasRole('admin');
     }
 
     /**
@@ -47,15 +43,7 @@ final class UserPolicy
      */
     public function update(User $user, User $model): bool
     {
-        // Allow if it's the same user and token has update ability
-        if ($user->id === $model->id && $user->tokenCan('update')) {
-            return true;
-        }
-
-        // Allow if user has write permission and belongs to same team
-        return $user->belongsToTeam($model->currentTeam)
-            && $user->hasTeamPermission($model->currentTeam, 'update')
-            && $user->tokenCan('update');
+        return  auth()->user()->hasRole('admin');
     }
 
     /**
@@ -63,15 +51,7 @@ final class UserPolicy
      */
     public function delete(User $user, User $model): bool
     {
-        // Prevent self-deletion
-        if ($user->id === $model->id) {
-            return false;
-        }
-
-        // Only admin can delete users
-        return $user->belongsToTeam($model->currentTeam)
-            && $user->hasTeamRole($user->currentTeam, 'admin')
-            && $user->tokenCan('delete');
+        return  auth()->user()->hasRole('admin');
     }
 
     /**
@@ -79,9 +59,7 @@ final class UserPolicy
      */
     public function restore(User $user, User $model): bool
     {
-        return $user->belongsToTeam($model->currentTeam)
-            && $user->hasTeamRole($user->currentTeam, 'admin')
-            && $user->tokenCan('delete');
+        return  auth()->user()->hasRole('admin');
     }
 
     /**
@@ -89,7 +67,6 @@ final class UserPolicy
      */
     public function forceDelete(User $user): bool
     {
-        return $user->hasTeamRole($user->currentTeam, 'admin')
-            && $user->tokenCan('delete');
+        return  auth()->user()->hasRole('admin');
     }
 }

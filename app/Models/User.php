@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Filament\Panel;
 use Carbon\CarbonImmutable;
+use Laratrust\Traits\HasRolesAndPermissions;
 use Laravel\Cashier\Billable;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Cashier\Subscription;
@@ -14,7 +15,6 @@ use Database\Factories\UserFactory;
 use Laravel\Jetstream\HasProfilePhoto;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\PersonalAccessToken;
-use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Collection;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -23,6 +23,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\DatabaseNotificationCollection;
+use Laratrust\Contracts\LaratrustUser;
 
 use function Illuminate\Events\queueable;
 
@@ -90,8 +91,10 @@ use function Illuminate\Events\queueable;
  *
  * @mixin \Eloquent
  */
-final class User extends Authenticatable implements FilamentUser, MustVerifyEmail
+final class User extends Authenticatable implements MustVerifyEmail,LaratrustUser
 {
+    use HasRolesAndPermissions;
+
     use Billable;
     use HasApiTokens;
 
@@ -99,9 +102,6 @@ final class User extends Authenticatable implements FilamentUser, MustVerifyEmai
     use HasFactory;
 
     use HasProfilePhoto;
-    use HasTeams  {
-        ownedTeams as public ownedTeamsBase;
-    }
     use Notifiable;
     use TwoFactorAuthenticatable;
 
@@ -134,16 +134,6 @@ final class User extends Authenticatable implements FilamentUser, MustVerifyEmai
     ];
 
     /**
-     * Get the team that the invitation belongs to.
-     *
-     * @return HasMany<Team, covariant $this>
-     */
-    public function ownedTeams(): HasMany
-    {
-        return $this->ownedTeamsBase();
-    }
-
-    /**
      * Get the Oauth Connections for the user.
      *
      * @return HasMany<OauthConnection, covariant $this>
@@ -153,13 +143,6 @@ final class User extends Authenticatable implements FilamentUser, MustVerifyEmai
         return $this->hasMany(OauthConnection::class);
     }
 
-    /**
-     * Configure the panel access.
-     */
-    public function canAccessPanel(Panel $panel): bool
-    {
-        return true;
-    }
 
     protected static function booted(): void
     {
