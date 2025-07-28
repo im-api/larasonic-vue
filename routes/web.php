@@ -36,11 +36,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     Route::delete('/auth/destroy/{provider}', [OauthController::class, 'destroy'])->name('oauth.destroy');
 
-    Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
 
-    Route::resource('/subscriptions', SubscriptionController::class)
-        ->names('subscriptions')
-        ->only(['index', 'create', 'store', 'show']);
+
 
     Route::prefix('admin')->name('admin.')->middleware(['role:admin'])->group(function () {
         // Admin Routes
