@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Http\Middleware;
 
-use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -46,10 +45,6 @@ final class HandleInertiaRequests extends Middleware
                 'message' => fn () => $request->session()->get('message'),
                 'success' => fn () => $request->session()->get('success'),
                 'error' => fn () => $request->session()->get('error'),
-            ],
-            'auth' => [
-                'user' => Auth::user(),
-                'isAdmin' => Auth::check() && Auth::user()->hasRole('admin'),
             ],
         ]);
     }

@@ -1,6 +1,6 @@
 <script setup>
 import { Icon } from '@iconify/vue'
-import { Link, usePage } from '@inertiajs/vue3'
+import { Link } from '@inertiajs/vue3'
 import { useColorMode } from '@vueuse/core'
 import { computed, inject } from 'vue'
 import {
@@ -35,12 +35,6 @@ const navigationConfig = [
     ],
   },
   {
-    label: 'Admin',
-    items: [
-      { name: 'Simple Admin Page', icon: 'lucide:shield-ellipsis', route: 'admin.simple-admin' },
-    ],
-  },
-  {
     label: null,
     class: 'mt-auto',
     items: [
@@ -61,14 +55,7 @@ const navigationConfig = [
 ]
 
 const isDarkMode = computed(() => mode.value === 'dark')
-const page = usePage()
-const isAdmin = computed(() => page.props.auth.isAdmin)
-const filteredNavigationConfig = computed(() => {
-  return navigationConfig.filter((group) => {
-    return !(group.label === 'Admin' && !isAdmin.value)
-    // include everything else
-  })
-})
+
 function renderLink(item) {
   if (item.external) {
     return {
@@ -86,7 +73,7 @@ function renderLink(item) {
 
 <template>
   <SidebarContent>
-    <SidebarGroup v-for="(group, index) in filteredNavigationConfig" :key="index" :class="group.class">
+    <SidebarGroup v-for="(group, index) in navigationConfig" :key="index" :class="group.class">
       <SidebarGroupLabel v-if="group.label">
         {{ group.label }}
       </SidebarGroupLabel>
