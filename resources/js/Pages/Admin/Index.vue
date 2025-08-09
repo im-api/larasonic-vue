@@ -1,14 +1,18 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue'
 
-const title = `Simple Admin Index`
+const title = `صفحه ادمین ساده`
 </script>
 
 <template>
   <AppLayout :title="title">
     <div>
       <h2>
-        This file is at /resources/js/pages/admin/index.vue
+        این فایل در
+        <code>
+          /resources/js/pages/admin/index.vue
+        </code>
+        قرار دارد
       </h2>
     </div>
   </AppLayout>

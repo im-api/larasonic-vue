@@ -29,7 +29,7 @@ defineProps({
 </script>
 
 <template>
-  <AppLayout title="Settings">
+  <AppLayout title="تنظیمات">
     <template #header>
       <h2 class="text-xl font-semibold leading-tight">
         Profile Settings
