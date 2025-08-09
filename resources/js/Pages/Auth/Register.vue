@@ -12,7 +12,7 @@ import Label from '@/components/ui/label/Label.vue'
 import { useSeoMetaTags } from '@/composables/useSeoMetaTags.js'
 
 useSeoMetaTags({
-  title: 'Register',
+  title: 'ثبت نام',
 })
 
 const route = inject('route')
@@ -39,7 +39,7 @@ function submit() {
           <AuthenticationCardLogo />
         </CardTitle>
         <CardDescription class="text-center text-2xl">
-          Create your account
+            ایجاد حساب کاربری جدید
         </CardDescription>
       </CardHeader>
 
@@ -47,19 +47,19 @@ function submit() {
         <form @submit.prevent="submit">
           <div class="grid gap-4">
             <div class="grid gap-2">
-              <Label for="name">Name</Label>
+              <Label for="name">نام و نام خانوادگی</Label>
               <Input id="name" v-model="form.name" type="text" required autofocus autocomplete="name" />
               <InputError :message="form.errors.name" />
             </div>
 
             <div class="grid gap-2">
-              <Label for="email">Email</Label>
-              <Input id="email" v-model="form.email" type="email" required autocomplete="username" />
+              <Label for="email">آدرس ایمیل</Label>
+              <Input dir="ltr" id="email" v-model="form.email" type="email" required autocomplete="username" />
               <InputError :message="form.errors.email" />
             </div>
 
             <div class="grid gap-2">
-              <Label for="password">Password</Label>
+              <Label for="password">رمزعبور</Label>
               <Input
                 id="password" v-model="form.password" type="password" required
                 autocomplete="new-password"
@@ -68,7 +68,7 @@ function submit() {
             </div>
 
             <div class="grid gap-2">
-              <Label for="password_confirmation">Confirm Password</Label>
+              <Label for="password_confirmation">تکرار رمزعبور</Label>
               <Input
                 id="password_confirmation" v-model="form.password_confirmation" type="password"
                 required autocomplete="new-password"
@@ -78,11 +78,11 @@ function submit() {
 
             <div class="flex items-center justify-end gap-4">
               <Link :href="route('login')" class="text-sm underline">
-                Already registered?
+                    درصورتی که قبلا ثبت نام کردید اینجا کلیک کنید
               </Link>
 
               <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                Register
+                ایجاد حساب کاربری
               </Button>
             </div>
           </div>

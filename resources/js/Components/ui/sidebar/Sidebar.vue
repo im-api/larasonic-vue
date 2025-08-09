@@ -12,7 +12,7 @@ defineOptions({
 })
 
 const props = withDefaults(defineProps<SidebarProps>(), {
-  side: 'left',
+  side: 'right',
   variant: 'sidebar',
   collapsible: 'offcanvas',
 })

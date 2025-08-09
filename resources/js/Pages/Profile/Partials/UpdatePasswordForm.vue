@@ -26,7 +26,7 @@ function updatePassword() {
     preserveScroll: true,
     onSuccess: () => {
       form.reset()
-      toast.success('Password updated')
+      toast.success('رمزعبور تغییر یافت')
     },
     onError: () => {
       if (form.errors.password) {
@@ -46,16 +46,16 @@ function updatePassword() {
 <template>
   <FormSection @submitted="updatePassword">
     <template #title>
-      Update Password
+      تغییر رمزعبور
     </template>
 
     <template #description>
-      Ensure your account is using a long, random password to stay secure.
+      مطمئن شوید از رمز قوی و طولانی استفاده میکنید
     </template>
 
     <template #form>
       <div class="col-span-6 sm:col-span-4">
-        <Label for="password">New Password</Label>
+        <Label for="password">رمزعبور جدید</Label>
         <Input
           id="password" ref="passwordInput" v-model="form.password" type="password"
           class="mt-1 block w-full" autocomplete="new-password"
@@ -64,7 +64,7 @@ function updatePassword() {
       </div>
 
       <div class="col-span-6 sm:col-span-4">
-        <Label for="password_confirmation">Confirm Password</Label>
+        <Label for="password_confirmation">تکرار رمزعبور جدید</Label>
         <Input
           id="password_confirmation" v-model="form.password_confirmation" type="password"
           class="mt-1 block w-full" autocomplete="new-password"
@@ -75,7 +75,7 @@ function updatePassword() {
 
     <template #actions>
       <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-        Save
+        ذخیره
       </Button>
     </template>
   </FormSection>

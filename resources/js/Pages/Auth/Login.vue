@@ -27,8 +27,8 @@ const activeTab = useLocalStorage('login-active-tab', 'password')
 
 // Form state
 const passwordForm = useForm({
-  email: 'test@example.com',
-  password: 'password',
+  email: '',
+  password: '',
   remember: false,
 })
 
@@ -86,7 +86,7 @@ onMounted(() => {
 
 // SEO
 useSeoMetaTags({
-  title: 'Log in',
+  title: 'ورود',
 })
 </script>
 
@@ -101,7 +101,7 @@ useSeoMetaTags({
           <AuthenticationCardLogo />
         </CardTitle>
         <CardDescription class="text-center text-2xl font-light">
-          Welcome Back
+          خوش آمدید
         </CardDescription>
       </CardHeader>
 
@@ -115,10 +115,10 @@ useSeoMetaTags({
         <Tabs v-model="activeTab" class="w-full">
           <TabsList class="grid w-full grid-cols-2 rounded-lg p-1">
             <TabsTrigger value="password">
-              Password
+              با استفاده از رمزعبور
             </TabsTrigger>
             <TabsTrigger value="login-link">
-              Login Link
+              با استفاده از لینک
             </TabsTrigger>
           </TabsList>
 
@@ -129,12 +129,13 @@ useSeoMetaTags({
                 <div class="grid gap-4">
                   <!-- Email -->
                   <div class="grid gap-2">
-                    <Label for="email">Email</Label>
+                    <Label for="email">ایمیل</Label>
                     <Input
                       id="email"
                       v-model="passwordForm.email"
                       type="email"
                       placeholder="name@example.com"
+                      dir="ltr"
                       required
                       autofocus
                       autocomplete="username"
@@ -145,13 +146,13 @@ useSeoMetaTags({
                   <!-- Password -->
                   <div class="grid gap-2">
                     <div class="flex items-center justify-between">
-                      <Label for="password">Password</Label>
+                      <Label for="password">رمزعبور</Label>
                       <Link
                         v-if="canResetPassword"
                         :href="route('password.request')"
                         class="text-sm text-muted-foreground hover:text-primary hover:underline underline-offset-4"
                       >
-                        Forgot password?
+                        رمزعبور خود را فراموش کرده اید؟
                       </Link>
                     </div>
                     <Input
@@ -172,7 +173,7 @@ useSeoMetaTags({
                       name="remember"
                     />
                     <label for="remember" class="text-sm text-muted-foreground">
-                      Remember me
+                      مرا به خاطر بسپار
                     </label>
                   </div>
 
@@ -182,7 +183,7 @@ useSeoMetaTags({
                     :class="{ 'opacity-75': passwordForm.processing }"
                     :disabled="isProcessing"
                   >
-                    {{ passwordForm.processing ? 'Signing in...' : 'Sign in' }}
+                    {{ passwordForm.processing ? 'درحال ورود...' : 'ورود' }}
                   </Button>
                 </div>
               </form>
@@ -191,12 +192,12 @@ useSeoMetaTags({
             <!-- Login Link -->
             <TabsContent value="login-link" class="space-y-4">
               <div class="text-sm text-muted-foreground">
-                We'll send you a login link for password-free sign in.
+                  ما یک لینک ورود برای ورود بدون رمز عبور برای شما ارسال خواهیم کرد.
               </div>
               <form @submit.prevent="handleLoginLink">
                 <div class="grid gap-4">
                   <div class="grid gap-2">
-                    <Label for="login-link-email">Email</Label>
+                    <Label for="login-link-email">ایمیل</Label>
                     <Input
                       id="login-link-email"
                       v-model="loginLinkForm.email"
@@ -213,7 +214,7 @@ useSeoMetaTags({
                     :class="{ 'opacity-75': loginLinkForm.processing }"
                     :disabled="isProcessing"
                   >
-                    {{ loginLinkForm.processing ? 'Sending...' : 'Send Login Link' }}
+                    {{ loginLinkForm.processing ? 'درحال ارسال' : 'ارسال لینک ورود' }}
                   </Button>
                 </div>
               </form>
@@ -229,7 +230,7 @@ useSeoMetaTags({
             </div>
             <div class="relative flex justify-center text-xs uppercase">
               <span class="bg-background px-2 text-muted-foreground">
-                Or continue with
+                ورود با شبکه های اجتماعی
               </span>
             </div>
           </div>
@@ -246,12 +247,12 @@ useSeoMetaTags({
 
         <!-- Sign Up Link -->
         <div class="mt-6 text-center text-sm text-muted-foreground">
-          Don't have an account?
+          حساب کاربری ندارید؟
           <Link
             :href="route('register')"
             class="font-medium text-primary hover:underline underline-offset-4"
           >
-            Sign up
+            ثبت نام کنید
           </Link>
         </div>
       </CardContent>

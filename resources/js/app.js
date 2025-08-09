@@ -6,7 +6,7 @@ import { createApp, h } from 'vue'
 import { ZiggyVue } from 'ziggy-js'
 import './bootstrap'
 import '../css/app.css'
-
+import 'vue-sonner/style.css'
 /**
  * This is used from unhead plugin to use seo meta tags
  * @see {@link https://unhead.unjs.io/setup/unhead/introduction} For createHead instance
@@ -28,6 +28,6 @@ createInertiaApp({
       .mount(el)
   },
   progress: {
-    color: '#4B5563',
+    color: '#4c95ff',
   },
 })

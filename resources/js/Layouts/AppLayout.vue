@@ -26,7 +26,6 @@ useSeoMetaTags({
 
 <template>
   <div>
-    <Sonner position="top-center" />
     <SidebarProvider>
       <Sidebar collapsible="icon">
         <SidebarHeader>
@@ -72,4 +71,7 @@ useSeoMetaTags({
       </SidebarInset>
     </SidebarProvider>
   </div>
+
+  <!-- Sonner outside the main div to prevent layout shifts -->
+  <Sonner />
 </template>

@@ -33,7 +33,7 @@ function updateProfileInformation() {
     preserveScroll: true,
     onSuccess: () => {
       clearPhotoFileInput()
-      toast.success('Profile information updated')
+      toast.success('اطلاعات پروفایل بروزرسانی شد')
     },
   })
 }
@@ -82,11 +82,11 @@ function clearPhotoFileInput() {
 <template>
   <FormSection @submitted="updateProfileInformation">
     <template #title>
-      Profile Information
+      اطلاعات پروفایل
     </template>
 
     <template #description>
-      Update your account's profile information and email address.
+      از اینجا میتوانید پروفایل خود را بروزرسانی کنید
     </template>
 
     <template #form>
@@ -126,7 +126,7 @@ function clearPhotoFileInput() {
 
       <!-- Name -->
       <div class="col-span-6 sm:col-span-4">
-        <Label for="name">Name</Label>
+        <Label for="name">نام</Label>
         <Input
           id="name" v-model="form.name" type="text" class="mt-1 block w-full" required
           autocomplete="name"
@@ -136,7 +136,7 @@ function clearPhotoFileInput() {
 
       <!-- Email -->
       <div class="col-span-6 sm:col-span-4">
-        <Label for="email">Email</Label>
+        <Label for="email">آدرس ایمیل</Label>
         <Input
           id="email"
           v-model="form.email"
@@ -170,7 +170,7 @@ function clearPhotoFileInput() {
 
     <template #actions>
       <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-        Save
+        ذخیره
       </Button>
     </template>
   </FormSection>

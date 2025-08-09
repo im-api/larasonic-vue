@@ -20,24 +20,23 @@ const mode = useColorMode({
 
 const navigationConfig = [
   {
-    label: 'Platform',
+    label: 'پلتفرم',
     items: [
-      { name: 'Dashboard', icon: 'lucide:layout-dashboard', route: 'dashboard' },
-      { name: 'Settings', icon: 'lucide:settings', route: 'profile.show' },
-      { name: 'Chat', icon: 'lucide:message-circle', route: 'chat.index' },
+      { name: 'داشبورد', icon: 'lucide:layout-dashboard', route: 'dashboard' },
+      { name: 'تنظیمات', icon: 'lucide:settings', route: 'profile.show' },
     ],
   },
   {
-    label: 'API',
+    label: 'وب سرویس',
     items: [
-      { name: 'API Tokens', icon: 'lucide:key', route: 'api-tokens.index' },
-      { name: 'API Documentation', icon: 'lucide:book-heart', route: 'scribe', external: true },
+      { name: 'توکن وب سرویس', icon: 'lucide:key', route: 'api-tokens.index' },
+      { name: 'داکیومنت وب سرویس', icon: 'lucide:book-heart', route: 'scribe', external: true },
     ],
   },
   {
-    label: 'Admin',
+    label: 'مدیریت (ادمین)',
     items: [
-      { name: 'Simple Admin Page', icon: 'lucide:shield-ellipsis', route: 'admin.simple-admin' },
+      { name: 'صفحه ساده ادمین', icon: 'lucide:shield-ellipsis', route: 'admin.simple-admin' },
     ],
   },
   {
@@ -45,15 +44,9 @@ const navigationConfig = [
     class: 'mt-auto',
     items: [
       {
-        name: 'Support',
+        name: 'پشتیبانی',
         icon: 'lucide:life-buoy',
-        href: 'https://github.com/shipfastlabs/larasonic-vue/issues',
-        external: true,
-      },
-      {
-        name: 'Documentation',
-        icon: 'lucide:book-marked',
-        href: 'https://docs.larasonic.com',
+        href: '#',
         external: true,
       },
     ],
@@ -106,7 +99,8 @@ function renderLink(item) {
         <SidebarMenuItem v-if="index === navigationConfig.length - 1">
           <SidebarMenuButton @click="mode = isDarkMode ? 'light' : 'dark'">
             <Icon :icon="isDarkMode ? 'lucide:moon' : 'lucide:sun'" />
-            {{ isDarkMode ? 'Dark' : 'Light' }} Mode
+              حالت
+            {{ isDarkMode ? 'تاریک' : 'روشن' }}
           </SidebarMenuButton>
         </SidebarMenuItem>
       </SidebarMenu>

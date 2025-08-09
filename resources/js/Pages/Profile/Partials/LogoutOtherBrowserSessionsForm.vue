@@ -24,7 +24,7 @@ function logoutOtherBrowserSessions(password) {
     preserveScroll: true,
     onSuccess: () => {
       form.reset()
-      toast.success('Logged out of other browser sessions')
+      toast.success('با موفقیت انجام شد')
     },
     onFinish: () => form.reset(),
   })
@@ -34,18 +34,16 @@ function logoutOtherBrowserSessions(password) {
 <template>
   <ActionSection>
     <template #title>
-      Browser Sessions
+      سشن های فعال
     </template>
 
     <template #description>
-      Manage and log out your active sessions on other browsers and devices.
+      مدیریت و خروج از سشن های فعال
     </template>
 
     <template #content>
       <div class="max-w-xl text-sm ">
-        If necessary, you may log out of all of your other browser sessions across all of your devices. Some of
-        your recent sessions are listed below; however, this list may not be exhaustive. If you feel your
-        account has been compromised, you should also update your password.
+          در صورت لزوم، می‌توانید از تمام جلسات مرورگر دیگر خود در تمام دستگاه‌هایتان خارج شوید. برخی از جلسات اخیر شما در زیر فهرست شده‌اند؛ با این حال، این لیست ممکن است کامل نباشد. اگر احساس می‌کنید حساب شما به خطر افتاده است، باید رمز عبور خود را نیز به‌روزرسانی کنید.
       </div>
 
       <!-- Other Browser Sessions -->
@@ -66,9 +64,10 @@ function logoutOtherBrowserSessions(password) {
               <div class="text-xs">
                 {{ session.ip_address }},
 
-                <span v-if="session.is_current_device" class="font-semibold text-green-400">This
-                  device</span>
-                <span v-else>Last active {{ session.last_active }}</span>
+                <span v-if="session.is_current_device" class="font-semibold text-green-400">
+                    همین دستگاه
+                </span>
+                <span v-else>آخرین فعالیت {{ session.last_active }}</span>
               </div>
             </div>
           </div>
@@ -77,12 +76,12 @@ function logoutOtherBrowserSessions(password) {
 
       <div class="mt-5 flex items-center">
         <ConfirmsPassword
-          title="Log Out Other Browser Sessions"
-          content="Please enter your password to confirm you would like to log out of your other browser sessions across all of your devices."
-          button="Log Out Other Browser Sessions" @confirmed="logoutOtherBrowserSessions"
+          title="خروج از سایر دستگاه ها"
+          content="لطفاً رمز عبور خود را وارد کنید تا تأیید کنید که می‌خواهید از سایر جلسات مرورگر خود در تمام دستگاه‌هایتان خارج شوید."
+          button="انجام" @confirmed="logoutOtherBrowserSessions"
         >
           <Button>
-            Log Out Other Browser Sessions
+              خروج از سایر دستگاه ها
           </Button>
         </ConfirmsPassword>
       </div>

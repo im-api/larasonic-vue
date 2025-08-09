@@ -19,7 +19,7 @@ const props = defineProps({
 })
 
 useSeoMetaTags({
-  title: 'Register',
+  title: 'تغییر رمزعبور',
 })
 
 const route = inject('route')
@@ -45,14 +45,14 @@ function submit() {
           <AuthenticationCardLogo />
         </CardTitle>
         <CardDescription class="text-center text-2xl">
-          Set your new password
+          ایجاد رمزعبور جدید
         </CardDescription>
       </CardHeader>
 
       <CardContent>
         <form @submit.prevent="submit">
           <div>
-            <Label for="email">Email</Label>
+            <Label for="email">ایمیل شما</Label>
             <Input
               id="email" v-model="form.email" type="email" class="mt-1 block w-full" required autofocus
               autocomplete="username"
@@ -61,7 +61,7 @@ function submit() {
           </div>
 
           <div class="mt-4">
-            <Label for="password">Password</Label>
+            <Label for="password">رمزعبور جدید</Label>
             <Input
               id="password" v-model="form.password" type="password" class="mt-1 block w-full" required
               autocomplete="new-password"
@@ -70,7 +70,7 @@ function submit() {
           </div>
 
           <div class="mt-4">
-            <Label for="password_confirmation">Confirm Password</Label>
+            <Label for="password_confirmation">تکرار رمزعبور جدید</Label>
             <Input
               id="password_confirmation" v-model="form.password_confirmation" type="password"
               class="mt-1 block w-full" required autocomplete="new-password"
@@ -80,7 +80,7 @@ function submit() {
 
           <div class="mt-4 flex items-center justify-end">
             <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-              Reset Password
+              تغییر رمزعبور
             </Button>
           </div>
         </form>

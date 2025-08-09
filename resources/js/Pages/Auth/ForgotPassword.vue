@@ -14,7 +14,7 @@ defineProps({
 })
 
 useSeoMetaTags({
-  title: 'Forgot Password',
+  title: 'فراموشی رمزعبور',
 })
 
 const route = inject('route')
@@ -35,14 +35,13 @@ function submit() {
           <AuthenticationCardLogo />
         </CardTitle>
         <CardDescription class="text-center text-2xl">
-          Reset your password
+          فراموشی رمزعبور
         </CardDescription>
       </CardHeader>
 
       <CardContent>
         <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-          Forgot your password? No problem. Just let us know your email address and we will email you a
-          password reset link that will allow you to choose a new one.
+            رمز عبور خود را فراموش کرده‌اید؟ مشکلی نیست. فقط آدرس ایمیل خود را به ما اطلاع دهید تا یک لینک بازنشانی رمز عبور برای شما ایمیل کنیم که به شما امکان می‌دهد رمز عبور جدیدی انتخاب کنید.
         </div>
 
         <div v-if="status" class="mb-4 text-sm font-medium text-green-600 dark:text-green-400">
@@ -51,7 +50,7 @@ function submit() {
 
         <form @submit.prevent="submit">
           <div>
-            <Label for="email">Email</Label>
+            <Label for="email">ایمیل</Label>
             <Input
               id="email" v-model="form.email" type="email" class="mt-1 block w-full" required autofocus
               autocomplete="username"
@@ -61,7 +60,7 @@ function submit() {
 
           <div class="mt-4 flex items-center justify-end">
             <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-              Email Password Reset Link
+              ارسال لینک تغییر رمزعبور
             </Button>
           </div>
         </form>

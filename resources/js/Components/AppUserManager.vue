@@ -84,7 +84,7 @@ function logout() {
       <DropdownMenuSeparator />
       <DropdownMenuItem @click="logout">
         <Icon icon="lucide:log-out" />
-        Log out
+        خروج
       </DropdownMenuItem>
     </DropdownMenuContent>
   </DropdownMenu>
